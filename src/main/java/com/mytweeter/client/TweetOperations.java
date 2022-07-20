@@ -218,7 +218,16 @@ public class TweetOperations {
                 System.out.println(c);
             }
 
-            likeOrCommentOnTweet(tweet, user);
+            System.out.print("press 1 to like or comment on  tweet and any other key to exit: ");
+            String next = ApplicationContext.getStringScanner().next();
+
+            try {
+                if (Integer.parseInt(next)==1){
+                    likeOrCommentOnTweet(tweet, user);
+                }
+            }catch (Exception e){
+                System.out.println("\n");
+            }
 
         } else System.out.println("This tweet id does not exist.");
 
@@ -319,30 +328,33 @@ public class TweetOperations {
         int i = 1;
 
 
-        boolean flag = true;
-        while (flag) {
-            for (Comment c : commentsOfAUserOnATweet) {
-                System.out.println(i + ": " + c);
+        if (commentsOfAUserOnATweet.size()!=0){
+            boolean flag = true;
+            while (flag) {
+                for (Comment c : commentsOfAUserOnATweet) {
+                    System.out.println(i + ": " + c);
+                }
+                System.out.print("Press 1 to edit a comment and 2 for exit: ");
+                int selectNumber = ApplicationContext.getNumberScanner().nextInt();
+
+                if (selectNumber == 1) {
+                    System.out.print("Enter the number of above comments to edit it: ");
+                    int commentNumber = ApplicationContext.getNumberScanner().nextInt() - 1;
+                    if (commentNumber < commentsOfAUserOnATweet.size() && commentNumber >= 0) {
+                        Comment comment = commentsOfAUserOnATweet.get(commentNumber);
+                        System.out.println("Write your comment.");
+                        String commentText = ApplicationContext.getStringScanner().nextLine();
+                        comment.setComment(commentText);
+                        ApplicationContext.getCommentService().save(comment);
+                    } else System.out.println("Number is out of bound.");
+                } else if (selectNumber == 2) {
+                    flag = false;
+                } else System.out.println("Enter valid number");
+
+                System.out.println("===============================");
             }
-            System.out.print("Press 1 to edit a comment and 2 for exit: ");
-            int selectNumber = ApplicationContext.getNumberScanner().nextInt();
+        }else System.out.println("You don't have any comment on this tweet.");
 
-            if (selectNumber == 1) {
-                System.out.print("Enter the number of above comments to edit it: ");
-                int commentNumber = ApplicationContext.getNumberScanner().nextInt() - 1;
-                if (commentNumber < commentsOfAUserOnATweet.size() && commentNumber >= 0) {
-                    Comment comment = commentsOfAUserOnATweet.get(commentNumber);
-                    System.out.println("Write your comment.");
-                    String commentText = ApplicationContext.getStringScanner().nextLine();
-                    comment.setComment(commentText);
-                    ApplicationContext.getCommentService().save(comment);
-                } else System.out.println("Number is out of bound.");
-            } else if (selectNumber == 2) {
-                flag = false;
-            } else System.out.println("Enter valid number");
-
-            System.out.println("===============================");
-        }
     }
 
 

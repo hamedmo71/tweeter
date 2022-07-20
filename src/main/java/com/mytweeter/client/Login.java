@@ -66,6 +66,7 @@ public class Login {
                 ApplicationContext.menu.showEnterValidNumMessage();
 
             }
+            System.out.println("==============================");
         }
     }
 

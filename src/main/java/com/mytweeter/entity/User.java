@@ -129,7 +129,6 @@ public class User extends BaseEntity<Long> {
                 "\tfirstName: " + firstName  + "\n"+
                 "\tlastName: " + lastName + "\n"+
                 "\tusername: " + username + "\n"+
-                "\tpassword: " + password + "\n"+
                 "\tbio: " + bio;
     }
 }
