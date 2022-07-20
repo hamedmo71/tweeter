@@ -182,7 +182,7 @@ public class TweetOperations {
     }
 
 
-    private static Tweet askForShowTweetByDetail(User user) {
+    public static Tweet askForShowTweetByDetail(User user) {
         Tweet tweet = null;
 
         try {

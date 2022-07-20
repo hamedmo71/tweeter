@@ -29,7 +29,8 @@ public class Menu {
         System.out.println("3. Tweet");
         System.out.println("4. Show all tweets");
         System.out.println("5. Search in tweets");
-        System.out.println("6. Back to previous menu");
+        System.out.println("6. Search in users");
+        System.out.println("7. Back to previous menu");
     }
 
     public void showInsertTweetContext() {
@@ -130,5 +131,13 @@ public class Menu {
 
     public void showEnterBioMessage() {
         System.out.print("bio: ");
+    }
+
+    public void showUserSearchMenu() {
+        System.out.println("Search items:");
+        System.out.println("1. First name of user");
+        System.out.println("2. Last name of user");
+        System.out.println("3. Username of user");
+        System.out.println("4. Start Searching");
     }
 }

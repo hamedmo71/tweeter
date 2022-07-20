@@ -4,6 +4,10 @@ import com.mytweeter.base.service.impl.BaseServiceImpl;
 import com.mytweeter.entity.User;
 import com.mytweeter.repository.UserRepository;
 import com.mytweeter.service.UserService;
+import com.mytweeter.util.UserSearch;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserServiceImpl extends BaseServiceImpl<User,Long, UserRepository> implements UserService {
     public UserServiceImpl(UserRepository repository) {
@@ -30,5 +34,17 @@ public class UserServiceImpl extends BaseServiceImpl<User,Long, UserRepository> 
             System.out.println("Wrong username!!!");
         }
         return user;
+    }
+
+    @Override
+    public List<User> searchUser(UserSearch userSearch) {
+        List<User> userList=new ArrayList<>();
+        try {
+            userList = repository.findUserByUsersProperty(userSearch);
+        }catch (Exception e){
+            System.out.println("There is not any user with this features!");
+        }
+
+        return userList;
     }
 }

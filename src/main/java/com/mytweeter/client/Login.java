@@ -55,6 +55,8 @@ public class Login {
                         TweetOperations.searchInTweets(user);
                         break;
                     case 6:
+                          UserProfile.searchInUsers(user);
+                    case 7:
                         flag = false;
                         break;
                     default:
