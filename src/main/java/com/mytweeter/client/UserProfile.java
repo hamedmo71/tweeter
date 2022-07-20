@@ -84,18 +84,50 @@ public class UserProfile {
     }
 
     private static void editAccount(User user) {
-        ApplicationContext.menu.showInputFirstName();
-        String firstName=ApplicationContext.getStringScanner().next();
-        ApplicationContext.menu.showInputLastName();
-        String lastName=ApplicationContext.getStringScanner().next();
-        ApplicationContext.menu.showEnterUsernameMessage();
-        String username=ApplicationContext.getStringScanner().next();
-        ApplicationContext.menu.showEnterPasswordMessage();
-        String password=ApplicationContext.getStringScanner().next();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setUsername(username);
-        user.setPassword(password);
+
+        boolean flag=true;
+
+        while(flag){
+            ApplicationContext.menu.editUserMenu();
+            int selectedNum = ApplicationContext.getNumberScanner().nextInt();
+            switch (selectedNum){
+                case 1:
+                    ApplicationContext.menu.showInputFirstName();
+                    String firstName=ApplicationContext.getStringScanner().nextLine();
+                    user.setFirstName(firstName);
+                    break;
+                case 2:
+                    ApplicationContext.menu.showInputLastName();
+                    String lastName=ApplicationContext.getStringScanner().nextLine();
+                    user.setLastName(lastName);
+                    break;
+                case 3:
+                    ApplicationContext.menu.showEnterUsernameMessage();
+                    String username=ApplicationContext.getStringScanner().nextLine();
+                    user.setUsername(username);
+                    break;
+                case 4:
+                    ApplicationContext.menu.showEnterPasswordMessage();
+                    String password=ApplicationContext.getStringScanner().next();
+                    user.setPassword(password);
+                    break;
+                case 5:
+                    ApplicationContext.menu.showEnterBioMessage();
+                    String bio=ApplicationContext.getStringScanner().nextLine();
+                    user.setBio(bio);
+                    break;
+                case 6:
+                    flag=false;
+                    break;
+                default:
+                    System.out.println("Enter valid number.");
+                    break;
+            }
+        }
+
+
+
+
         ApplicationContext.getUserService().save(user);
     }
 }

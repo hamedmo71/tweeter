@@ -24,6 +24,8 @@ public class User extends BaseEntity<Long> {
     @Column(nullable = false)
     private String password;
 
+    private String bio;
+
     @OneToMany(mappedBy = "user")
     @Cascade(CascadeType.ALL)
     private List<Tweet> tweets;
@@ -105,12 +107,29 @@ public class User extends BaseEntity<Long> {
         this.likeTweets = likeTweets;
     }
 
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public List<LikeTweet> getLikeTweets() {
+        return likeTweets;
+    }
+
+    public void setLikeTweets(List<LikeTweet> likeTweets) {
+        this.likeTweets = likeTweets;
+    }
+
     @Override
     public String toString() {
         return "User Profile: \n" +
                 "\tfirstName: " + firstName  + "\n"+
                 "\tlastName: " + lastName + "\n"+
                 "\tusername: " + username + "\n"+
-                "\tpassword: " + password + "\n";
+                "\tpassword: " + password + "\n"+
+                "\tbio: " + bio;
     }
 }

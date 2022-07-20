@@ -118,4 +118,17 @@ public class Menu {
         System.out.println("2. Sign up");
         System.out.println("3. Exit");
     }
+
+    public void editUserMenu() {
+        System.out.println("1. Edit first name ");
+        System.out.println("2. Edit last name ");
+        System.out.println("3. Edit username ");
+        System.out.println("4. Edit password ");
+        System.out.println("5. Edit bio ");
+        System.out.println("6. Back to previous menu ");
+    }
+
+    public void showEnterBioMessage() {
+        System.out.print("bio: ");
+    }
 }
